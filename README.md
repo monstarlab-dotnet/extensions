@@ -12,7 +12,7 @@ This project contains extensions for basic .NET types e.g. string to enum
 This method converts a string to a nullable enum, meaning that if the string cannot be parsed into the specified enum, the method will return `null`.
 
 ### TryParseEnum
-This method converts a string to an enum. The method returns whether it was successful or not and returns a default value as the out parameter if it isn't able to parse it.
+This method converts a string to an enum. The method returns whether it was successful or not and returns a default value (if provided) as the out parameter if it isn't able to parse it.
 
 
 # Monstarlab.Web.Extensions
