@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <Version>0.1.0</Version>
+    <Authors>Monstarlab</Authors>
+    <PackageProjectUrl>https://github.com/monstarlab-dotnet/extensions</PackageProjectUrl>
+    <Description>Extension methods</Description>
+    <PackageIcon>Monstarlab logo.png</PackageIcon>
+    <RepositoryUrl>https://github.com/monstarlab-dotnet/extensions</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="Monstarlab logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
