@@ -1,0 +1,66 @@
+name: Publish to NuGet
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  publishExtensions:
+    name: Publish Monstarlab.Extensions
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+
+    - name: Clean
+      run: dotnet clean Monstarlab.Extensions/Monstarlab.Extensions.csproj --configuration Release && dotnet nuget locals all --clear
+      
+    - name: Install dependencies
+      run: dotnet restore Monstarlab.Extensions/Monstarlab.Extensions.csproj
+      
+    - name: Build
+      run: dotnet build Monstarlab.Extensions/Monstarlab.Extensions.csproj --configuration Release --no-restore
+
+    - name: Generate NuGet package
+      run: |  
+        cd Monstarlab.Extensions
+        dotnet pack --configuration Release --output out --no-build  
+
+    - name: Push generated package to NuGet.org
+      run: dotnet nuget push **.nupkg --skip-duplicate --no-symbols true --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+
+  publishWebExtensions:
+    name: Publish Monstarlab.Web.Extensions
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+
+    - name: Clean
+      run: dotnet clean Monstarlab.Web.Extensions/Monstarlab.Web.Extensions.csproj --configuration Release && dotnet nuget locals all --clear
+      
+    - name: Install dependencies
+      run: dotnet restore Monstarlab.Web.Extensions/Monstarlab.Web.Extensions.csproj
+      
+    - name: Build
+      run: dotnet build Monstarlab.Web.Extensions/Monstarlab.Web.Extensions.csproj --configuration Release --no-restore
+
+    - name: Generate NuGet package
+      run: |  
+        cd Monstarlab.Web.Extensions
+        dotnet pack --configuration Release --output out --no-build  
+
+    - name: Push generated package to NuGet.org
+      run: dotnet nuget push **.nupkg --skip-duplicate --no-symbols true --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+

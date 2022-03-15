@@ -4,11 +4,24 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Version>0.1.0</Version>
+    <Authors>Monstarlab</Authors>
+    <Description>Extension methods for ASP.NET Core</Description>
+    <PackageProjectUrl>https://github.com/monstarlab-dotnet/extensions</PackageProjectUrl>
+    <PackageIcon>Monstarlab logo.png</PackageIcon>
+    <RepositoryUrl>https://github.com/monstarlab-dotnet/extensions</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Monstarlab logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
